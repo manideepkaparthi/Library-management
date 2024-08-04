@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-
-const Edit = ({details}) => {
+const Edit = ({ details }) => {
   const [formData, setFormData] = useState(details);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   console.log(details);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,11 +16,16 @@ const Edit = ({details}) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put(`http://https://library-management-p05z.onrender.com/api/v1/book/editBook/${formData._id}`, formData, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    })
+    axios
+      .put(
+        `https://library-management-p05z.onrender.com/api/v1/book/editBook/${formData._id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res.data);
         navigate("/home");

@@ -88,7 +88,7 @@ const AddBook = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://https://library-management-p05z.onrender.com/api/v1/category/createCategory",
+        "https://library-management-p05z.onrender.com/api/v1/category/createCategory",
         categoryData,
         {
           headers: {
@@ -114,7 +114,7 @@ const AddBook = () => {
   const getAllCategories = async () => {
     try {
       const response = await axios.get(
-        "http://https://library-management-p05z.onrender.com/api/v1/category/getCategories"
+        "https://library-management-p05z.onrender.com/api/v1/category/getCategories"
       );
       setAllCategories(response.data.allCategory);
     } catch (error) {

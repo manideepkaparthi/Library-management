@@ -9,14 +9,14 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [cnfpassword, setCnfpassword] = useState("");
   const [Error, setError] = useState("");
-  const [accountType, setAccountType] = useState("User")
+  const [accountType, setAccountType] = useState("User");
   let navigate = useNavigate();
 
   function handleSubmit(e) {
     console.log("inside handle submit");
     e.preventDefault();
     if (password !== cnfpassword) {
-      console.log("error running")
+      console.log("error running");
       setError("Passwords do not match");
       return;
     }
@@ -26,27 +26,38 @@ const Signup = () => {
     }
 
     //posting the details to the backend
-    console.log("posting")
-    console.log("This is the formData", firstName, lastName, email, password, cnfpassword, accountType)
-    axios.post("http://https://library-management-p05z.onrender.com/api/v1/auth/signup", {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      confirmPassword: cnfpassword,
-      accountType: accountType
-    }).then((res) => {
-      console.log(res);
-      setError(res.message)
-      if (res.status === 200) {
-        navigate("/");
-      }
-    }).catch((err) => {
-      console.log(err);
-      if (err.response.status === 400) {
-        setError("Username already exists");
-      }
-    });
+    console.log("posting");
+    console.log(
+      "This is the formData",
+      firstName,
+      lastName,
+      email,
+      password,
+      cnfpassword,
+      accountType
+    );
+    axios
+      .post("https://library-management-p05z.onrender.com/api/v1/auth/signup", {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        confirmPassword: cnfpassword,
+        accountType: accountType,
+      })
+      .then((res) => {
+        console.log(res);
+        setError(res.message);
+        if (res.status === 200) {
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.status === 400) {
+          setError("Username already exists");
+        }
+      });
   }
 
   return (
@@ -64,13 +75,19 @@ const Signup = () => {
             borderRadius: "8px",
           }}
         >
-          <h1 style={{ color: "#333", marginBottom: "10px", fontSize: "24px", fontWeight: "bold " }}>
+          <h1
+            style={{
+              color: "#333",
+              marginBottom: "10px",
+              fontSize: "24px",
+              fontWeight: "bold ",
+            }}
+          >
             Library Management System
           </h1>
           <label
             htmlFor="name"
             style={{ display: "block", margin: "5px 0", fontSize: "16px" }}
-
           >
             First Name
           </label>
@@ -91,7 +108,6 @@ const Signup = () => {
           <label
             htmlFor="name"
             style={{ display: "block", margin: "5px 0", fontSize: "16px" }}
-
           >
             Last Name
           </label>
@@ -113,7 +129,6 @@ const Signup = () => {
           <label
             htmlFor="email"
             style={{ display: "block", margin: "5px 0", fontSize: "16px" }}
-
           >
             E-mail
           </label>
@@ -131,7 +146,10 @@ const Signup = () => {
               border: "1px solid #ccc",
             }}
           />
-          <label htmlFor="accountType" style={{ display: "block", margin: "10px 0", fontSize: "16px" }}>
+          <label
+            htmlFor="accountType"
+            style={{ display: "block", margin: "10px 0", fontSize: "16px" }}
+          >
             Are you an Admin?
           </label>
           <div className="flex justify-evenly">
@@ -143,9 +161,7 @@ const Signup = () => {
                 checked={accountType === "Admin"}
                 onChange={() => setAccountType("Admin")}
               />
-              <span style={{ marginRight: "2px" }}>
-                Admin
-              </span>
+              <span style={{ marginRight: "2px" }}>Admin</span>
             </div>
             <div className="flex items-center">
               <input
@@ -155,9 +171,7 @@ const Signup = () => {
                 checked={accountType === "User"}
                 onChange={() => setAccountType("User")}
               />
-              <span>
-                User
-              </span>
+              <span>User</span>
             </div>
           </div>
           <label

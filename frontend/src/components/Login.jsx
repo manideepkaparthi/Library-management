@@ -7,38 +7,40 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
-  const { loggedIn,setLoggedIn } = useContext(UserContext)
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://https://library-management-p05z.onrender.com/api/v1/auth/signin", {
-      email: email,
-      password: password,
-    }).then((res) => {
-      console.log(res);
-      if (res.status === 200) {
-        console.log(res.data);
-        sessionStorage.setItem("token", res.data.token);
-        sessionStorage.setItem("user", JSON.stringify(res.data.user));
-        setLoggedIn(true);
-        console.log("Logged in", loggedIn)
-        navigate("/home");
-      }
-    }).catch((err) => {
-      console.log(err);
-      setLoginMessage("Invalid Credentials");
-    });
+    axios
+      .post("https://library-management-p05z.onrender.com/api/v1/auth/signin", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          console.log(res.data);
+          sessionStorage.setItem("token", res.data.token);
+          sessionStorage.setItem("user", JSON.stringify(res.data.user));
+          setLoggedIn(true);
+          console.log("Logged in", loggedIn);
+          navigate("/home");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoginMessage("Invalid Credentials");
+      });
   };
   const handleAdminClick = (e) => {
     e.preventDefault();
     navigate("/admin");
-  }
+  };
   const handleNewUserClick = (e) => {
     e.preventDefault();
     navigate("/signup");
-  }
-
+  };
 
   return (
     <>
@@ -57,7 +59,12 @@ const Login = () => {
         >
           <div>
             <h1
-              style={{ color: "#333", marginBottom: "20px", fontSize: "24px", fontWeight: "bold" }}
+              style={{
+                color: "#333",
+                marginBottom: "20px",
+                fontSize: "24px",
+                fontWeight: "bold",
+              }}
             >
               Library Management System
             </h1>
@@ -122,9 +129,20 @@ const Login = () => {
             }}
           >
             Log in
-          </button><br />
-          <a style={{ color: "blue", marginRight: "15px", cursor: "pointer" }} onClick={handleAdminClick}>Are you an admin?</a>
-          <a style={{ color: "blue", cursor: "pointer" }} onClick={handleNewUserClick}>New User? Signup.</a>
+          </button>
+          <br />
+          <a
+            style={{ color: "blue", marginRight: "15px", cursor: "pointer" }}
+            onClick={handleAdminClick}
+          >
+            Are you an admin?
+          </a>
+          <a
+            style={{ color: "blue", cursor: "pointer" }}
+            onClick={handleNewUserClick}
+          >
+            New User? Signup.
+          </a>
         </form>
       </div>
     </>
