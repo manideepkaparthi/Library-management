@@ -28,7 +28,7 @@ const Signup = () => {
     //posting the details to the backend
     console.log("posting")
     console.log("This is the formData", firstName, lastName, email, password, cnfpassword, accountType)
-    axios.post("http://localhost:5000/api/v1/auth/signup", {
+    axios.post("http://https://library-management-p05z.onrender.com/api/v1/auth/signup", {
       firstName: firstName,
       lastName: lastName,
       email: email,

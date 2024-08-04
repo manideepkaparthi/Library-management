@@ -55,7 +55,7 @@ const AddBook = () => {
     const token = sessionStorage.getItem("token");
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/book/createBook",
+        "https://library-management-p05z.onrender.com/api/v1/book/createBook",
         formData,
         {
           headers: {
@@ -88,7 +88,7 @@ const AddBook = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/category/createCategory",
+        "http://https://library-management-p05z.onrender.com/api/v1/category/createCategory",
         categoryData,
         {
           headers: {
@@ -114,7 +114,7 @@ const AddBook = () => {
   const getAllCategories = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/v1/category/getCategories"
+        "http://https://library-management-p05z.onrender.com/api/v1/category/getCategories"
       );
       setAllCategories(response.data.allCategory);
     } catch (error) {

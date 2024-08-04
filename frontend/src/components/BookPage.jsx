@@ -22,7 +22,7 @@ const BookPage = () => {
     const token = sessionStorage.getItem('token');
     const fetchCardData = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/v1/book/getBook/${id}`, {
+            const response = await axios.get(`http://https://library-management-p05z.onrender.com/api/v1/book/getBook/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -40,7 +40,7 @@ const BookPage = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:5000/api/v1/book/deleteBook/${id}`, {
+            await axios.delete(`http://https://library-management-p05z.onrender.com/api/v1/book/deleteBook/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -60,7 +60,7 @@ const BookPage = () => {
     const handleReserveBook = async (e) => {
         e.preventDefault()
         try {
-            await axios.put(`http://localhost:5000/api/v1/reservedBooks/dd/${id}`, {
+            await axios.put(`http://https://library-management-p05z.onrender.com/api/v1/reservedBooks/dd/${id}`, {
                 noOfCopies: availableCopies
             }, {
                 headers: {

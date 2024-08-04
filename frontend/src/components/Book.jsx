@@ -20,7 +20,7 @@ const Book = () => {
 
     const fetchBooks = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/v1/book/getAllBooks');
+            const response = await axios.get('http://https://library-management-p05z.onrender.com/api/v1/book/getAllBooks');
             setBooks(response.data.books)
         } catch (error) {
             console.error('Error fetching books:', error);

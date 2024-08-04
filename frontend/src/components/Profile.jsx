@@ -18,7 +18,7 @@ const Profile = () => {
     if (userData && userData._id && !dataFetched) {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/v1/reservedBooks/getAllReservedBooks/${userData._id}`,
+          `http://https://library-management-p05z.onrender.com/api/v1/reservedBooks/getAllReservedBooks/${userData._id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -40,7 +40,7 @@ const Profile = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/v1/reservedBooks/deleteReserveBook/${id}`,
+        `http://https://library-management-p05z.onrender.com/api/v1/reservedBooks/deleteReserveBook/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

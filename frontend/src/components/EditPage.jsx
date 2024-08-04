@@ -17,7 +17,7 @@ const Edit = ({details}) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:5000/api/v1/book/editBook/${formData._id}`, formData, {
+    axios.put(`http://https://library-management-p05z.onrender.com/api/v1/book/editBook/${formData._id}`, formData, {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },

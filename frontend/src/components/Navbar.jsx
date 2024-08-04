@@ -16,7 +16,7 @@ const Navbar = ({ setFilteredBooks }) => {
 
     const fetchBooks = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/v1/book/getAllBooks');
+            const response = await axios.get('http://https://library-management-p05z.onrender.com/api/v1/book/getAllBooks');
             setBooks(response.data.books);
             setFilteredBooks(response.data.books);
         } catch (error) {
